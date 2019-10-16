@@ -2,8 +2,14 @@ package com.stackroute.Muzix.repository;
 
 import com.stackroute.Muzix.domain.Track;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface TrackRepository extends JpaRepository<Track, Integer> {
+
+    @Query("FROM  Track  WHERE trackName = ?1")
+    List<Track> getTrackByName(String trackName);
 }

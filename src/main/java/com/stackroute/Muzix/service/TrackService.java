@@ -9,4 +9,6 @@ public interface TrackService {
     public List<Track> getAllTrack();
     public List<Track> updateComment(Track track);
     public Boolean deleteTrack(int trackId);
+    public List<Track> trackByName(String trackName);
+
 }

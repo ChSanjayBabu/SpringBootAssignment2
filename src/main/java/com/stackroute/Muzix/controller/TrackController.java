@@ -45,7 +45,7 @@ public class TrackController {
         try
         {
             trackService.deleteTrack(track.getTrackId());
-            responseEntity= new ResponseEntity<String>("successfully created", HttpStatus.OK);;
+            responseEntity= new ResponseEntity<String>("successfully deleted", HttpStatus.OK);;
         }
         catch (Exception e)
         {
@@ -68,5 +68,22 @@ public class TrackController {
         }
         return responseEntity;
     }
+    @GetMapping("search/{name}")
+    public ResponseEntity<?> searchTrack(@PathVariable String name)
+    {
+        ResponseEntity responseEntity;
+        try
+        {
+            trackService.trackByName(name);
+            responseEntity= new ResponseEntity<String>("Search found", HttpStatus.CREATED);
+        }
+        catch (Exception e)
+        {
+            responseEntity =new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+
 
 }

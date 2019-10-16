@@ -18,7 +18,7 @@ public class TrackServiceImpl implements TrackService{
     @Override
     public Track saveTrack(Track track) {
         Track savedTrack =trackRepository.save(track);
-       return savedTrack;
+        return savedTrack;
     }
 
     @Override
@@ -37,4 +37,10 @@ public class TrackServiceImpl implements TrackService{
         trackRepository.deleteById(trackId);
         return null;
     }
+    @Override
+    public List<Track> trackByName(String trackName) {
+        List<Track> tracks = trackRepository.getTrackByName(trackName);
+        return tracks;
+    }
+
 }
