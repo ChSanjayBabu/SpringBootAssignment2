@@ -16,7 +16,9 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public Track saveTrack(Track track) {
+    public Track saveTrack(Track track) throws Exception{
+        if(trackRepository.existsById(track.getTrackId()))
+            throw new Exception("TrackAlredyExists");
         Track savedTrack =trackRepository.save(track);
         return savedTrack;
     }
@@ -27,20 +29,22 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public List<Track> updateComment(Track track) {
-        trackRepository.save(track);
-        return (List<Track>) trackRepository.findAll();
+    public Track updateTrack(Track track) {
+        Track updatedtrack =trackRepository.save(track);
+        return updatedtrack;
     }
 
     @Override
-    public Boolean deleteTrack(int trackId) {
+    public void deleteTrack(int trackId) {
         trackRepository.deleteById(trackId);
-        return null;
     }
     @Override
     public List<Track> trackByName(String trackName) {
         List<Track> tracks = trackRepository.getTrackByName(trackName);
-        return tracks;
+        if(tracks.size()==0)
+            return null;
+        else
+            return tracks;
     }
 
 }

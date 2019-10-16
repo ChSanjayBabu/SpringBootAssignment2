@@ -59,8 +59,8 @@ public class TrackController {
         ResponseEntity responseEntity;
         try
         {
-            trackService.saveTrack(track);
-            responseEntity= new ResponseEntity<String>("successfully update", HttpStatus.CREATED);
+            trackService.updateTrack(track);
+            responseEntity= new ResponseEntity<String>("successfully updated", HttpStatus.CREATED);
         }
         catch (Exception e)
         {
@@ -74,7 +74,8 @@ public class TrackController {
         ResponseEntity responseEntity;
         try
         {
-            trackService.trackByName(name);
+            if(trackService.trackByName(name) ==  null)
+                throw new Exception("TrackNotFoundException");
             responseEntity= new ResponseEntity<String>("Search found", HttpStatus.CREATED);
         }
         catch (Exception e)
