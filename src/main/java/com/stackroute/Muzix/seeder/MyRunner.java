@@ -1,4 +1,4 @@
-package com.stackroute.Muzix.config;
+package com.stackroute.Muzix.seeder;
 
 import com.stackroute.Muzix.domain.Track;
 import com.stackroute.Muzix.repository.TrackRepository;
