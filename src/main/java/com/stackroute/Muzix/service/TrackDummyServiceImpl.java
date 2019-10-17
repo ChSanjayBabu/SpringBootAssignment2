@@ -2,24 +2,24 @@ package com.stackroute.Muzix.service;
 
 import com.stackroute.Muzix.domain.Track;
 import com.stackroute.Muzix.repository.TrackRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Primary
+import java.util.List;
+
 @Service
-public class TrackServiceImpl implements TrackService{
+public class TrackDummyServiceImpl implements TrackService{
     TrackRepository trackRepository;
 
     @Autowired
-    public TrackServiceImpl(TrackRepository trackRepository) {
+    public TrackDummyServiceImpl(TrackRepository trackRepository) {
         this.trackRepository = trackRepository;
     }
 
     @Override
     public void serviceUsed() {
-        System.out.println("original");
+        System.out.println("dummy");
     }
 
     @Override
