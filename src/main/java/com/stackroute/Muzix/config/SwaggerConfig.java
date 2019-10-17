@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -21,6 +22,7 @@ import springfox.documentation.service.Contact;
 
 @EnableAutoConfiguration
 @EnableSwagger2
+@Profile("prod")
 public class SwaggerConfig {
     @Bean
     public Docket productApi() {
