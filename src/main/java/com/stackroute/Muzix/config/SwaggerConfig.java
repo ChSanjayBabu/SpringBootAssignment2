@@ -1,9 +1,11 @@
 package com.stackroute.Muzix.config;
 
 import com.stackroute.Muzix.domain.Track;
+import com.stackroute.Muzix.repository.TrackRepository;
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +19,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 
 
-
-@Configuration
+@EnableAutoConfiguration
 @EnableSwagger2
 public class SwaggerConfig {
     @Bean
@@ -30,20 +31,7 @@ public class SwaggerConfig {
                 .build();
     }
 
-    @Bean
-    public CommandLineRunner loadData(JpaRepository repository) {
-        return (args) -> {
-            // save a couple of customers
-            Track track = new Track();
-            track.setTrackName("Rainberry");
-            track.setComments("by zyan malik");
-            track.setTrackId(2);
-            repository.save(track);
-            // fetch all customers
-        };
 
-
-    }
 }
 //@Configuration
 //@EnableSwagger2

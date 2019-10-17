@@ -19,18 +19,12 @@ public class TrackController {
         this.trackService = trackService;
     }
     @PostMapping("save")
-    public ResponseEntity<?> saveTrack(@RequestBody Track track)
+    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws Exception
     {
         ResponseEntity responseEntity;
-        try
-        {
-            trackService.saveTrack(track);
+            if(trackService.saveTrack(track)==null)
+                throw new Exception("TrackAlreadyExists");
             responseEntity= new ResponseEntity<String>("successfully created", HttpStatus.CREATED);
-        }
-        catch (Exception e)
-        {
-            responseEntity =new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
-        }
         return responseEntity;
     }
     @GetMapping("/display")
@@ -69,19 +63,12 @@ public class TrackController {
         return responseEntity;
     }
     @GetMapping("search/{name}")
-    public ResponseEntity<?> searchTrack(@PathVariable String name)
+    public ResponseEntity<?> searchTrack(@PathVariable String name) throws Exception
     {
         ResponseEntity responseEntity;
-        try
-        {
             if(trackService.trackByName(name) ==  null)
                 throw new Exception("TrackNotFoundException");
-            responseEntity= new ResponseEntity<String>("Search found", HttpStatus.CREATED);
-        }
-        catch (Exception e)
-        {
-            responseEntity =new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
-        }
+            responseEntity =new ResponseEntity<String>("Search found",HttpStatus.CONFLICT);
         return responseEntity;
     }
 
