@@ -4,12 +4,17 @@ import com.stackroute.Muzix.domain.Track;
 import com.stackroute.Muzix.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@PropertySources({
+        @PropertySource(value = "classpath:application-prod.properties"),
+        @PropertySource(value = "classpath:application.properties")
+})
 @RestController
 @RequestMapping(value="api/v1")
 public class TrackController {

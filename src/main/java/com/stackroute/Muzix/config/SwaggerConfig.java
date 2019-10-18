@@ -1,23 +1,15 @@
 package com.stackroute.Muzix.config;
 
-import com.stackroute.Muzix.domain.Track;
-import com.stackroute.Muzix.repository.TrackRepository;
-import org.h2.server.web.WebServlet;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.jpa.repository.JpaRepository;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import static springfox.documentation.builders.PathSelectors.regex;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 
 
 @EnableAutoConfiguration
